@@ -17,6 +17,16 @@ const CONNECTION_URL = 'mongodb+srv://Kingsman27:Mumam270901@cluster0.fzjqosh.mo
 // to store the current port, we have used two values
 // one is the current port number of the running process.
 // if that doesnt do good, we will use port 3000
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-mongoose.connect(CONNECTION_URL , {useNewUrlParser: true, useUnifiedTopology: true});
+// using mongoose to connect to the mongoDB database at the provided URL.
+// it returns a promise haha.
+
+// What is useNewUrlParser and useUnifiedTopology
+// Good practice to add them -- reduces error.
+mongoose.connect(CONNECTION_URL , {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => app.listen(PORT, () => console.log('Server running on port: ${PORT}')))
+.catch((error) => console.log(error.message));
+
+// Again the parameters are to just minify the warnings. Not including them does no harm.
+mongoose.set('useFindAndModify', true);

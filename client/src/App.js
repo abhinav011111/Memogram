@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 // Places the return html.
 const App = () => {
   return (
