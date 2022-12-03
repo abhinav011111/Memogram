@@ -35,4 +35,4 @@
 * Run **npm init** to initialize node modules in server directory
 * Run **npm install express body-parser mongoose cors** to install the required modules
 
-#### All the material-ui components are available on (https://mui.com/material-ui/react-app-bar/)[Link]
+#### All the material-ui components are available on [Link](https://mui.com/material-ui/react-app-bar/)
