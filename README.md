@@ -32,3 +32,4 @@
 
 #### Commands run in server directory
 * Run **npm init** to initialize node modules in server directory
+* Run **npm install express body-parser mongoose cors** to install the required modules
