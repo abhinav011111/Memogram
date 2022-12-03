@@ -1,25 +1,46 @@
+// Importing react
 import React from 'react';
+
+// Importing the required components from the material using
+/*
+  Container
+  Appbar
+  Typography
+  Grow
+  Grid
+*/
+
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+
+// importing the image
+import photos from './images/photos.png';
+
 // Places the return html.
 const App = () => {
   return (
+
+    // Container
     <Container maxWidth="lg">
-    <AppBar position="static" color="inherit">
-      <Typography variant="h2" align="center">Memories</Typography>
+      <AppBar position="static" color="inherit">
+        <Typography variant="h2" align="center">Memories</Typography>
       </AppBar>
-      <img src={memories} alt="memories" height="60" />
+
+
+      <img src = {photos} alt="memories" height="1000" />
+
       <Grow in>
-      <Container>
-        <Grid container justify="space-between" alignItems="stretch" spacing={3}>
-          <Grid item xs={12} sm={7}>
-            <Posts/>
+        <Container>
+          <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+            {/* <Grid item xs={12} sm={7}>
+              <Posts/>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Form />
+            </Grid> */}
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Form />
-          </Grid>
-        </Grid>
-      </Container>
-    </Grow>
+        </Container>
+      </Grow>
+
     </Container>
   );
 }

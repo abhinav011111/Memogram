@@ -1,5 +1,4 @@
 // This file is to create schema and model for the postMessage.
-
 import mongoose from 'mongoose'; // Importing mongoDB crawler
 
 // Creating schema
