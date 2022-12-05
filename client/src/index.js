@@ -6,8 +6,9 @@ import ReactDOM from 'react-dom'; // Importing React DOM.
 //           Here we will import functionalities from redux
 
 import {Provider} from 'react-redux';
-import {configureStore, applyMiddleware, compose} from 'redux';
-import thunk from 'react-thunk';
+import {createStore} from 'redux';
+import {applyMiddleware, compose} from 'redux';
+import thunk from 'redux-thunk';
 import reducers from './reducers';
 
 // --------------------------------------------------------------------
@@ -16,7 +17,7 @@ import reducers from './reducers';
 import App from './App'; // Importing App function component.
 
 // Creating a store
-const store = configureStore(reducers, compose(applyMiddleware(thunk)));
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
 

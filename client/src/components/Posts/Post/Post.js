@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useStyles from './styles.js';
+import useStyles from './styles';
 
 // Functional component to design a single post
 const Post = () => {

@@ -10,15 +10,16 @@ import postRouter from './routes/posts.js'; // Import router for the posts funct
 // Creating express router
 const app = express();
 
-// We know that postRouter has a router that sends the given response to all the '/' files,
-// what we want is to send the generic response to '/posts' so we add a prefix '/posts' 
-// here in the function;
-app.use('/posts', postRouter);
-
 // Using body-parser to parse json with a limit of 30mb of file transfer
 app.use(bodyParser.json({limit : "30mb", extended : true}));
 app.use(bodyParser.urlencoded({limit : "30mb", extended : true}));
 app.use(cors());
+
+
+// We know that postRouter has a router that sends the given response to all the '/' files,
+// what we want is to send the generic response to '/posts' so we add a prefix '/posts' 
+// here in the function;
+app.use('/posts', postRouter);
 
 
 // variable to store the url of the MongoDB database
