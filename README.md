@@ -36,3 +36,5 @@
 * Run **npm install express body-parser mongoose cors** to install the required modules
 
 #### All the material-ui components are available on [Link](https://mui.com/material-ui/react-app-bar/)
+
+#### Learning about Redux can be carried out by [Here](https://www.tutorialspoint.com/redux/redux_core_concepts.htm)

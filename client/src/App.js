@@ -1,5 +1,6 @@
 // Importing react
-import React from 'react';
+// useEffect hook
+import React, {useEffect} from 'react';
 
 // Importing Components
 
@@ -24,9 +25,19 @@ import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 // importing the image
 import photos from './images/photos.png';
 
+// useDispatch hook
+import { useDispatch } from 'react-redux';
+
 // Places the return html.
 const App = () => {
+  // using the style hooks
   const classes = useStyles();
+
+  // using the hooks
+  const dispatch = useDispatch();
+
+  
+
   return ( 
     // Container
     <Container maxWidth="lg">
