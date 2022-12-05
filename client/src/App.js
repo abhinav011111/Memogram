@@ -28,6 +28,11 @@ import photos from './images/photos.png';
 // useDispatch hook
 import { useDispatch } from 'react-redux';
 
+
+import {getPosts} from './actions/posts.js';
+
+
+
 // Places the return html.
 const App = () => {
   // using the style hooks
@@ -36,6 +41,11 @@ const App = () => {
   // using the hooks
   const dispatch = useDispatch();
 
+
+  // use Effect of a particular function.
+  useEffect = (() =>{
+    dispatch(getPosts());
+  },  [dispatch]);
   
 
   return ( 

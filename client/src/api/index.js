@@ -8,4 +8,4 @@ const url = 'http://localhost:5000/posts';
 
 // Creating a fetchPost function to retrieve the posts
 // using the axios.get() function.
-export const fetchPost = () => axios.get(url);
+export const fetchPosts = () => axios.get(url);

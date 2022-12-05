@@ -30,6 +30,7 @@
   }
 ```
 * Run **npm install @material-ui/core** to install material-ui
+* Run **npm install redux react-redux** to install redux and all its dependencies.
 
 #### Commands run in server directory
 * Run **npm init** to initialize node modules in server directory
