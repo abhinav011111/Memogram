@@ -28,3 +28,29 @@ export const getPosts = () => async (dispatch) => {
     }
 };
 
+
+export const createPost = (post) => async (dispatch) => {
+
+    try {
+        // Bringing the data from the API using fetchPosts;
+        const {data} = await api.createPost(post);
+
+        // Defining an action
+        /*
+            Action 
+                type : CREATE
+                payload : new post to be created
+        */
+        const action = {type : 'CREATE', payload : data};
+
+
+        // returning the action using the dispatch function of REDUX-THUNK
+        dispatch(action);
+
+    } catch (error) {
+
+        // err
+        console.error(error.message);
+    }
+};
+
