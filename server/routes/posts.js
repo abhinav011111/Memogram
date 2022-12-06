@@ -1,7 +1,7 @@
 import express from 'express'; // importing express
 
 // post also imported
-import {getPosts, createPost} from '../controllers/posts.js'; // importing handler for the get method of the post router
+import {getPosts, createPost, updatePost} from '../controllers/posts.js'; // importing handler for the get method of the post router
 
 // Creating router for the express server
 // Router method is used.
@@ -19,3 +19,10 @@ router.patch('/:id', updatePost);
 
 // exporting default router
 export default router;
+
+
+// Where are the requests coming from?
+// They are generated and sent from the front-end 
+
+// Who does that?
+// User? No, User only clicks the functionalities, what our react+redux does is take the click, take the required, form the request body, set the request parameters, and send them to the backend using axios.

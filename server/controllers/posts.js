@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import PostMessage from "../models/postMessage.js";
 
 // Get posts
@@ -30,7 +31,17 @@ export const getPosts = async (req, res) => {
 // To create a new post
 export const createPost = async (req, res) => {
 
+
+    /*
+        What does the req contains?
+        It contains all the required information to create a database object as defined in the schema.
+        
+        creator, likeCount, title....
+    */
+
     // contains the req body....
+
+    // Paramters
     const post = req.body;
     // creating a new post
     const newPost = new PostMessage(post);
@@ -50,23 +61,20 @@ export const createPost = async (req, res) => {
     }
 };
 
-export const updatePost = async (req, res) =>{  
+export const updatePost = async (req, res) => {
 
     // finding the id of the post to be changed
-    const {id : _id} = req.params;
-
-    // Old Post
-    const post = req.body;
-
-
+    const { id } = req.params;
+    const { title, message, creator, selectedFile, tags } = req.body;
+    
     // Here we actually check whether the given id is a valid one or not.
     // We will use validator of the mongoose.
-    if(!mongoose.Types.ObjectId.isValid(_id)){
-        res.status(404).send('The id given is not valid. Not found...');
-    }
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
 
     // We will wait for the new post using the find findByIdAndUpdate function
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new : true});
+    await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 
     res.json(updatedPost);
 }

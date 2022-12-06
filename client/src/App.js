@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; //Importing react and hooks
+
+// --------------------------------------------------------------------------------
+//                 Importing components from material-ui/component
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+// --------------------------------------------------------------------------------
 
+// Importing different components
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import { getPosts } from './actions/posts';
@@ -14,15 +19,19 @@ import photos from './images/photos.png';
 
   setCurrentId is the hook used to change or set the value of currentId in ALL the components.
 */
-const App = ({currentId, setCurrentId}) => {
-  const [currentId, setCurrentId] = useState(null);
+const App = () => {
+
+  // Current id of a post selected.
+  // If the no post is selected, it means current id is NULL
+  const [currentId, setCurrentId] = useState(0);
 
   const dispatch = useDispatch();
   const classes = useStyles();
 
+  // As soon as you open the app, you will see all the posts by DEFAULT
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <Container maxWidth="lg">
@@ -34,6 +43,7 @@ const App = ({currentId, setCurrentId}) => {
         <Container>
           <Grid container justifyContent ="space-between" alignItems="stretch" spacing={3}>
             <Grid item xs={12} sm={7}>
+              {/* we pass the function to make other components select any post*/}
               <Posts setCurrentId = {setCurrentId} />
             </Grid>
             <Grid item xs={12} sm={4}>

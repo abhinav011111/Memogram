@@ -13,10 +13,10 @@ import reducers from './reducers';
 
 // --------------------------------------------------------------------
 
+// Importing index.css
 import './index.css';
 
 import App from './App'; // Importing App function component.
-
 
 // Creating a store
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
