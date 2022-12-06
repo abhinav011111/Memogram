@@ -54,3 +54,28 @@ export const createPost = (post) => async (dispatch) => {
     }
 };
 
+
+export const updatePost = (id, post) => async (dispatch) => {
+
+    try {
+        // Bringing the data from the API using fetchPosts;
+        const {data} = await api.updatePost(id, post);
+
+        // Defining an action
+        /*
+            Action 
+                type : UPDATE
+                payload : updated post
+        */
+        const action = {type : 'UPDATE', payload : data};
+
+
+        // returning the action using the dispatch function of REDUX-THUNK
+        dispatch(action);
+
+    } catch (error) {
+
+        // err
+        console.error(error.message);
+    }
+};

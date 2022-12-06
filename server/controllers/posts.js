@@ -49,3 +49,24 @@ export const createPost = async (req, res) => {
         res.status(409).json({ mesage: error.message });
     }
 };
+
+export const updatePost = async (req, res) =>{  
+
+    // finding the id of the post to be changed
+    const {id : _id} = req.params;
+
+    // Old Post
+    const post = req.body;
+
+
+    // Here we actually check whether the given id is a valid one or not.
+    // We will use validator of the mongoose.
+    if(!mongoose.Types.ObjectId.isValid(_id)){
+        res.status(404).send('The id given is not valid. Not found...');
+    }
+
+    // We will wait for the new post using the find findByIdAndUpdate function
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new : true});
+
+    res.json(updatedPost);
+}

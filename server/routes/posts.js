@@ -14,5 +14,8 @@ router.get('/', getPosts);
 // post controller
 router.post('/', createPost);
 
+// update route
+router.patch('/:id', updatePost);
+
 // exporting default router
 export default router;

@@ -11,12 +11,12 @@ import FileBase from 'react-file-base64';
 
 import useStyles from './styles';
 
-import {createPost} from '../../actions/posts';
+import {createPost, updatePost} from '../../actions/posts';
 
 
 
 // form component
-const Form = () => {
+const Form = ({currentId, setCurrentId}) => {
 
   // Creating a state for all the Posts
   // Initially a NULL state is defined. It is also the DEFAULT state of the post.
@@ -27,7 +27,13 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost(postData))
+    if(currentId){
+      dispatch(updatePost(postData));
+    }
+    else{
+      dispatch(createPost(postData));
+    }
+    
   };
 
   const clear = () =>{

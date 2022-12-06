@@ -9,7 +9,7 @@ import useStyles from './styles';
 import {useSelector} from 'react-redux';
 
 // Posts functional component to design the overall container for the posts.
-const Posts = () => {
+const Posts = ({setCurrentId}) => {
 
 
   const classes = useStyles();
@@ -30,7 +30,7 @@ const Posts = () => {
           posts.map((post) =>(
             <Grid key = {post._id} item xs ={12} sm ={6}>
               {/* It is a component with value equal to post; */}
-              <Post post = {post}/>
+              <Post post = {post} setCurrentId = {setCurrentId}/>
             </Grid>
           ))
         }
