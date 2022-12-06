@@ -3,8 +3,8 @@
 ### We have created two directories : client and server
 
 #### Commands run in client directory
-* Run **npx create-react-app ./** to initialize an empty react app in client directory
-* Updated package.json with required dependencies and run the command **npm install --legacy-peer-deps**
+* Run **npx create-react-app ./** to initialize an empty react app in client directory.
+* Updated package.json with required dependencies and run the command **npm install --legacy-peer-deps**.
 * Dependencies
 ```
   "dependencies": {
@@ -29,8 +29,9 @@
     "redux-thunk": "^2.3.0"
   }
 ```
-* Run **npm install @material-ui/core** to install material-ui
+* Run **npm install @material-ui/core** to install material-ui.
 * Run **npm install redux react-redux** to install redux and all its dependencies.
+* Run **npm install @material-ui/icons** to install the material-ui icons.
 
 #### Commands run in server directory
 * Run **npm init** to initialize node modules in server directory
