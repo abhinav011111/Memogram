@@ -1,4 +1,4 @@
-import React from 'react'; //Importing react and hooks
+import React, { useState, useEffect } from 'react'; //Importing react and hooks
 
 // --------------------------------------------------------------------------------
 //                 Importing components from material-ui/component
@@ -8,6 +8,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
+
+
+import {useDispatch} from 'react-redux';
+import { getPosts } from './actions/posts';
 
 
 
@@ -21,7 +25,13 @@ const App = () => {
 
   // Current id of a post selected.
   // If the no post is selected, it means current id is NULL
-  
+  const [currentId, setCurrentId] = useState(0);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [currentId, dispatch]);
 
   return (
     <BrowserRouter>
