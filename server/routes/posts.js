@@ -1,7 +1,7 @@
 import express from 'express'; // importing express
 
 // post also imported
-import {getPosts, createPost, updatePost} from '../controllers/posts.js'; // importing handler for the get method of the post router
+import {getPosts, createPost, updatePost, deletePost, likePost} from '../controllers/posts.js'; // importing handler for the get method of the post router
 
 // Creating router for the express server
 // Router method is used.
@@ -17,6 +17,9 @@ router.post('/', createPost);
 // update route
 router.patch('/:id', updatePost);
 
+router.delete('/:id', deletePost);
+
+router.patch('/:id/likePost', likePost);
 // exporting default router
 export default router;
 
