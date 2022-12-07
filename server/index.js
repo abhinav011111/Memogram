@@ -1,3 +1,4 @@
+// import dotenv from 'dotenv';
 import express from 'express'; // Import express 
 import bodyParser from 'body-parser'; // Import body-parser
 import mongoose from 'mongoose'; // Import mongoose
@@ -25,7 +26,7 @@ app.use(cors());
 
 // Router send the requests to correct ENDPOINTS.
 app.use('/posts', postRouter);
-
+// dotenv.config();
 // http://localhost:5000/posts is sent to postRouter
 
 
