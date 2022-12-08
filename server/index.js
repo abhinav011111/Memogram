@@ -1,4 +1,4 @@
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import express from 'express'; // Import express 
 import bodyParser from 'body-parser'; // Import body-parser
 import mongoose from 'mongoose'; // Import mongoose
@@ -26,7 +26,7 @@ app.use(cors());
 
 // Router send the requests to correct ENDPOINTS.
 app.use('/posts', postRouter);
-// dotenv.config();
+dotenv.config();
 // http://localhost:5000/posts is sent to postRouter
 
 
@@ -43,7 +43,7 @@ const PORT = process.env.PORT || 5000;
 
 // What is useNewUrlParser and useUnifiedTopology
 // Good practice to add them -- reduces error.
-mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => app.listen(PORT, () => console.log(`Server listening on Port: http://localhost:${PORT}`)))
   .catch((error) => console.log(`${error} did not connect`));
 // The above runs the server(app) on the correct database url with mongoose crawler
