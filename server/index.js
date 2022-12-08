@@ -31,7 +31,6 @@ dotenv.config();
 
 
 // variable to store the url of the MongoDB database
-const CONNECTION_URL = 'mongodb+srv://Kingsman27:databasemongo@cluster0.fzjqosh.mongodb.net/?retryWrites=true&w=majority';
 
 // to store the current port, we have used two values
 // one is the current port number of the running process.
