@@ -19,7 +19,7 @@ const Form = ({currentId, setCurrentId}) => {
 
   // Creating a state for all the Posts
   // Initially a NULL state is defined. It is also the DEFAULT state of the post.
-  const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+  const [postData, setPostData] = useState({ title: '', message: '', tags: '', selectedFile: '' });
   
   // When is current Id null? When we are not editing any posts!!!!
   // post is equal to null post when the current id is null, otherwise its value is equal to the value of the post that we will edit.
@@ -27,27 +27,38 @@ const Form = ({currentId, setCurrentId}) => {
 
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const user = JSON.parse(localStorage.getItem('profile'));
   useEffect(() => {
     if(post) setPostData(post);
   }, [post, dispatch]);
 
   const clear = () =>{
     setCurrentId(0);
-    setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+    setPostData({ title: '', message: '', tags: '', selectedFile: '' });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if(currentId){
-      dispatch(updatePost(currentId, postData));
+      dispatch(updatePost(currentId, {...postData,name : user?.result?.name}));
+      clear();
     }
     else{
-      dispatch(createPost(postData));
+      dispatch(createPost({...postData,name:user?.result?.name}));
+      clear()
     }
     clear();
   };
 
+  if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper} elevation={6}>
+        <Typography variant="h6" align="center">
+          Please Sign In to create your own memories and like other's memories.
+        </Typography>
+      </Paper>
+    );
+  }
   
   return (
 
@@ -57,7 +68,6 @@ const Form = ({currentId, setCurrentId}) => {
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
 
         <Typography variant="h4">{currentId ? `Editing ${post.title}` : 'Creating a Memory'}</Typography>
-        <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })} />
 
         <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
 

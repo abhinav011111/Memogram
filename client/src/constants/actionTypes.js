@@ -1,4 +1,3 @@
-// This is done to ensure that when there is a spelling mistake in the action.type, it can be easily detected.
 export const CREATE = 'CREATE';
 export const UPDATE = 'UPDATE';
 export const DELETE = 'DELETE';

@@ -5,71 +5,46 @@ import LockOutLinedIcon from '@material-ui/icons/LockOutlined';
 import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import Icon from './icon';
+import Icon from './icon';
 import {gapi} from 'gapi-script';
 import useStyles from './styles';
 
 import Input from './Input';
-// import { signin , signup} from '../../actions/auth';
+import { signin , signup} from '../../actions/auth';
 
 const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 const Auth = () => {
-
     const classes = useStyles();
-
-
-    
     const [showPassword, setShowPassword] = useState(false);
 
     const [isSignUp, setIsSignup] = useState(false);
     const [formData, setFormData] = useState(initialState);
     // Current state is to show SignIn page.
-<<<<<<< HEAD
-
-    /*
-        if isSignUp is true => you are in sign up mode
-        else you are sign in mode.
-    */
-
-
-
-    const handleSubmit = () => {
-
-=======
     const dispatch = useDispatch();
     const history = useHistory();
     const handleSubmit = (e) => {
-        // e.preventDefault();
-        // console.log(formData);
-        // if(isSignUp){
-        //  dispatch(signup(formData,history));
-        // }
-        // else
-        // {
-        //     dispatch(signin(formData,history));
-        // }
->>>>>>> db538e8ce9b2b00d3b4c524b47b54788aa517556
+        e.preventDefault();
+        console.log(formData);
+        if(isSignUp){
+         dispatch(signup(formData,history));
+        }
+        else
+        {
+            dispatch(signin(formData,history));
+        }
     };
 
     const switchMode = () => {
         setIsSignup((prevIsSignUp) => !prevIsSignUp);
-        handleShowPassword(false);
+        setShowPassword(false);
     }
 
     const handleChange = (e) => {
-        // setFormData({...formData, [e.target.name]: e.target.value});
+         setFormData({...formData, [e.target.name]: e.target.value});
 
     };
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
-<<<<<<< HEAD
-    
-    return(
-        <Container component = "main" maxWidth = "xs">
-            <Paper className = {classes.paper} elevation={3}>
-
-
-=======
 
     const googleSuccess = async(res) => {
         const result = res?.profileObj;
@@ -105,7 +80,6 @@ const Auth = () => {
     return (
         <Container component="main" maxWidth="xs">
             <Paper className={classes.paper} elevation={3}>
->>>>>>> db538e8ce9b2b00d3b4c524b47b54788aa517556
                 <Avatar className={classes.avatar}>
                     <LockOutLinedIcon />
                 </Avatar>
