@@ -32,13 +32,19 @@
 * Run **npm install @material-ui/core** to install material-ui.
 * Run **npm install redux react-redux** to install redux and all its dependencies.
 * Run **npm install @material-ui/icons** to install the material-ui icons.
+<<<<<<< HEAD
 * Run **npm install react-router-dom** to install the react-router-dom.
+=======
+* Run **npm install gapi-script** to install the gapi-script.
+* Run **npm install react-google-login** to install the react-google-login.
+>>>>>>> db538e8ce9b2b00d3b4c524b47b54788aa517556
 
 #### Commands run in server directory
 * Run **npm init** to initialize node modules in server directory
 * Run **npm install express body-parser mongoose cors** to install the required modules
 * Install extension ES7 React
 * Run install **npm install dot env** to install the required modules
+
 
 #### All the material-ui components are available on [Link](https://mui.com/material-ui/react-app-bar/)
 
