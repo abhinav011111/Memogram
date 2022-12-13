@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Grid, CircularProgress} from '@material-ui/core';
+
 // Importing a single post functional component
 import Post from './Post/Post.js';
 
@@ -17,7 +18,7 @@ const Posts = ({setCurrentId}) => {
   const posts = useSelector((state) => state.posts);
 
   //------DEBUG------------
-  console.log(posts);
+  //console.log(posts);
   //-----------------------
 
   

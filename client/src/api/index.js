@@ -15,6 +15,9 @@ export const fetchPosts = () => axios.get(url);
 // using the axios.post() function.
 export const createPost = (newPost) => axios.post(url, newPost);
 
+
+
+// Creating a patch request to the passed url
 export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
 
 export const deletePost = (id) => axios.delete(`${url}/${id}`);

@@ -8,11 +8,22 @@ import useStyles from './styles';
 import Input from './Input';
 
 const Auth = () => {
+
     const classes = useStyles();
+
+
+    
     const [showPassword, setShowPassword] = useState(false);
 
     const [isSignUp, setIsSignup] = useState(false);
     // Current state is to show SignIn page.
+
+    /*
+        if isSignUp is true => you are in sign up mode
+        else you are sign in mode.
+    */
+
+
 
     const handleSubmit = () => {
 
@@ -32,6 +43,8 @@ const Auth = () => {
     return(
         <Container component = "main" maxWidth = "xs">
             <Paper className = {classes.paper} elevation={3}>
+
+
                 <Avatar className={classes.avatar}>
                     <LockOutLinedIcon/>
                 </Avatar>

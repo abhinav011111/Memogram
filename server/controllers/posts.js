@@ -91,7 +91,7 @@ export const deletePost = async (req, res) => {
 
     
 
-    // We will wait for the new post using the find findByIdAndUpdate function
+    // Removing the post with the passed Id
     await PostMessage.findByIdAndRemove(id);
 
     console.log("Deleted");
@@ -110,6 +110,7 @@ export const likePost = async (req, res) => {
     const post= await PostMessage.findById(id);
 
     // We will wait for the new post using the find findByIdAndUpdate function
+    // and increase the like-count by 1 everytime we click.
     const updatedPost= await PostMessage.findByIdAndUpdate(id,{likeCount: post.likeCount+1},{new:true})
 
     res.json(updatedPost);

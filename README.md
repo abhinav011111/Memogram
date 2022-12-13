@@ -32,6 +32,7 @@
 * Run **npm install @material-ui/core** to install material-ui.
 * Run **npm install redux react-redux** to install redux and all its dependencies.
 * Run **npm install @material-ui/icons** to install the material-ui icons.
+* Run **npm install react-router-dom** to install the react-router-dom.
 
 #### Commands run in server directory
 * Run **npm init** to initialize node modules in server directory
