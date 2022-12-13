@@ -32,9 +32,16 @@
 * Run **npm install @material-ui/core** to install material-ui.
 * Run **npm install redux react-redux** to install redux and all its dependencies.
 * Run **npm install @material-ui/icons** to install the material-ui icons.
+<<<<<<< HEAD
+* Run **npm install react-router-dom** to install the react-router-dom.
+=======
 * Run **npm install gapi-script** to install the gapi-script.
 * Run **npm install react-google-login** to install the react-google-login.
+<<<<<<< HEAD
 * Run **npm install jwt-decode** to install the jwt.
+=======
+>>>>>>> db538e8ce9b2b00d3b4c524b47b54788aa517556
+>>>>>>> f1be04602b5771eb4b8a80a6f8b14a19db0da20c
 
 #### Commands run in server directory
 * Run **npm init** to initialize node modules in server directory

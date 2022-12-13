@@ -14,15 +14,32 @@ import { signin , signup} from '../../actions/auth';
 
 const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 const Auth = () => {
+
     const classes = useStyles();
+
+
+    
     const [showPassword, setShowPassword] = useState(false);
 
     const [isSignUp, setIsSignup] = useState(false);
     const [formData, setFormData] = useState(initialState);
     // Current state is to show SignIn page.
+
+
+    /*
+        if isSignUp is true => you are in sign up mode
+        else you are sign in mode.
+    */
+
+
+
+    const handleSubmit = () => {
+
+
     const dispatch = useDispatch();
     const history = useHistory();
     const handleSubmit = (e) => {
+
         e.preventDefault();
         console.log(formData);
         if(isSignUp){
@@ -32,6 +49,18 @@ const Auth = () => {
         {
             dispatch(signin(formData,history));
         }
+
+        // e.preventDefault();
+        // console.log(formData);
+        // if(isSignUp){
+        //  dispatch(signup(formData,history));
+        // }
+        // else
+        // {
+        //     dispatch(signin(formData,history));
+        // }
+
+
     };
 
     const switchMode = () => {
@@ -45,6 +74,14 @@ const Auth = () => {
     };
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
+
+    
+    return(
+        <Container component = "main" maxWidth = "xs">
+            <Paper className = {classes.paper} elevation={3}>
+
+
+
 
     const googleSuccess = async(res) => {
         const result = res?.profileObj;
@@ -80,6 +117,7 @@ const Auth = () => {
     return (
         <Container component="main" maxWidth="xs">
             <Paper className={classes.paper} elevation={3}>
+
                 <Avatar className={classes.avatar}>
                     <LockOutLinedIcon />
                 </Avatar>
