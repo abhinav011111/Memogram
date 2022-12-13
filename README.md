@@ -34,6 +34,7 @@
 * Run **npm install @material-ui/icons** to install the material-ui icons.
 * Run **npm install gapi-script** to install the gapi-script.
 * Run **npm install react-google-login** to install the react-google-login.
+* Run **npm install jwt-decode** to install the jwt.
 
 #### Commands run in server directory
 * Run **npm init** to initialize node modules in server directory
