@@ -1,4 +1,4 @@
-import dotenv from 'dotenv'; // Import dotenv
+import dotenv from 'dotenv';
 import express from 'express'; // Import express 
 import bodyParser from 'body-parser'; // Import body-parser
 import mongoose from 'mongoose'; // Import mongoose

@@ -23,7 +23,6 @@ router.delete('/:id',auth, deletePost); //auth is added to see if the user has p
 router.patch('/:id/likePost',auth, likePost); //auth is added to see if the user has permission to like (only once) the post
 
 // exporting default router
-
 export default router;
 
 
