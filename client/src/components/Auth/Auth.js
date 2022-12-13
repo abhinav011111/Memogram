@@ -5,12 +5,12 @@ import LockOutLinedIcon from '@material-ui/icons/LockOutlined';
 import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import Icon from './icon';
+import Icon from './icon';
 import {gapi} from 'gapi-script';
 import useStyles from './styles';
 
 import Input from './Input';
-// import { signin , signup} from '../../actions/auth';
+import { signin , signup} from '../../actions/auth';
 
 const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 const Auth = () => {
@@ -23,24 +23,24 @@ const Auth = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const handleSubmit = (e) => {
-        // e.preventDefault();
-        // console.log(formData);
-        // if(isSignUp){
-        //  dispatch(signup(formData,history));
-        // }
-        // else
-        // {
-        //     dispatch(signin(formData,history));
-        // }
+        e.preventDefault();
+        console.log(formData);
+        if(isSignUp){
+         dispatch(signup(formData,history));
+        }
+        else
+        {
+            dispatch(signin(formData,history));
+        }
     };
 
     const switchMode = () => {
         setIsSignup((prevIsSignUp) => !prevIsSignUp);
-        handleShowPassword(false);
+        setShowPassword(false);
     }
 
     const handleChange = (e) => {
-        // setFormData({...formData, [e.target.name]: e.target.value});
+         setFormData({...formData, [e.target.name]: e.target.value});
 
     };
 

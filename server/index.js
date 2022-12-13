@@ -5,7 +5,7 @@ import mongoose from 'mongoose'; // Import mongoose
 import cors from 'cors'; // Import cors
 
 import postRouter from './routes/posts.js'; // Import router for the posts function in posts.js
-
+import userRouter from './routes/users.js'; 
 
 
 // Creating express server named 'app'
@@ -26,6 +26,7 @@ app.use(cors());
 
 // Router send the requests to correct ENDPOINTS.
 app.use('/posts', postRouter);
+app.use('/users', userRouter);
 dotenv.config();
 // http://localhost:5000/posts is sent to postRouter
 

@@ -2,7 +2,7 @@ import express from 'express'; // importing express
 
 // post also imported
 import {getPosts, createPost, updatePost, deletePost, likePost} from '../controllers/posts.js'; // importing handler for the get method of the post router
-
+import auth from '../middleware/auth.js'
 // Creating router for the express server
 // Router method is used.
 const router = express.Router();
@@ -15,11 +15,13 @@ router.get('/', getPosts);
 router.post('/', createPost);
 
 // update route
-router.patch('/:id', updatePost);
+router.patch('/:id',auth, updatePost); //auth is added to see if the user has permission to update the post
 
-router.delete('/:id', deletePost);
+router.delete('/:id',auth, deletePost); //auth is added to see if the user has permission to delete the post
 
-router.patch('/:id/likePost', likePost);
+
+router.patch('/:id/likePost',auth, likePost); //auth is added to see if the user has permission to like (only once) the post
+
 // exporting default router
 export default router;
 

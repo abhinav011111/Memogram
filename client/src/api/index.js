@@ -4,20 +4,29 @@
 import axios from 'axios';
 
 // URL on which the backend send the posts.
-const url = 'http://localhost:5000/posts';
+const API = axios.create({baseURL:'http://localhost:5000'});
+API.interceptors.request.use((req)=>{
+     if(localStorage.getItem('profile')){
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+     }
+     return req;
+});
 
 // Creating a fetchPost function to retrieve the posts
 // using the axios.get() function.
-export const fetchPosts = () => axios.get(url);
+export const fetchPosts = () => API.get('/posts');
 
 
 // Creating a create post request to the server with the data new post
 // using the axios.post() function.
-export const createPost = (newPost) => axios.post(url, newPost);
+export const createPost = (newPost) => API.post('/posts', newPost);
 
-export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
+export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
 
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
+export const deletePost = (id) => API.delete(`/posts/${id}`);
 
-export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
+export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
+
+export const signIn = (formData) =>API.post('/users/signin',formData);
+export const signUp = (formData) =>API.post('/users/signup',formData);
   
