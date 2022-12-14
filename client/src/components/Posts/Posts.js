@@ -17,7 +17,7 @@ const Posts = ({setCurrentId}) => {
   const posts = useSelector((state) => state.posts);
 
   //------DEBUG------------
-  console.log(posts);
+  // console.log(posts);
   //-----------------------
 
   

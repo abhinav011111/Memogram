@@ -5,10 +5,18 @@ import axios from 'axios';
 
 // URL on which the backend send the posts.
 const API = axios.create({baseURL:'http://localhost:5000'});
+
+// We intercept the request, and check whether an authorized actions is taking place
+// We find 'profile' from the local-storage
+// If it is found we set the headers,
+// "Bearer token"
+
 API.interceptors.request.use((req)=>{
      if(localStorage.getItem('profile')){
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
      }
+
+     // Transit the request forward
      return req;
 });
 

@@ -1,7 +1,8 @@
 import express from 'express'; // importing express
 
 // post also imported
-import {signin, signup} from '../controllers/user.js'; // importing handler for the get method of the post router
+import {signin, signup} from '../controllers/user.js'; 
+// importing handler for the get method of the post router
 
 // Creating router for the express server
 // Router method is used.

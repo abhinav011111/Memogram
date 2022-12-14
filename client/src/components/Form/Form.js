@@ -27,11 +27,17 @@ const Form = ({currentId, setCurrentId}) => {
 
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  // We find the user which is stored in the local-storage and parse it in JSON.
   const user = JSON.parse(localStorage.getItem('profile'));
+
+  // useEffect with dependencies
   useEffect(() => {
     if(post) setPostData(post);
   }, [post, dispatch]);
 
+
+  // Clear function to clean the form
   const clear = () =>{
     setCurrentId(0);
     setPostData({ title: '', message: '', tags: '', selectedFile: '' });
@@ -39,17 +45,23 @@ const Form = ({currentId, setCurrentId}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // If we have called the submit button and there is a non-null id, 
+    // then we will call the update method
+    // else we will call the create method
     if(currentId){
       dispatch(updatePost(currentId, {...postData,name : user?.result?.name}));
-      clear();
     }
     else{
       dispatch(createPost({...postData,name:user?.result?.name}));
-      clear()
     }
+
+    // Clear function called.
     clear();
   };
 
+
+  // If we dont have the user already assigned,
+  // then we just show a prompt message to the user
   if (!user?.result?.name) {
     return (
       <Paper className={classes.paper} elevation={6}>

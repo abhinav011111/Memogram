@@ -1,8 +1,10 @@
 import React from 'react';
 
+// -------------------------------------------------------------------------------
 import {TextField, Grid, InputAdornment, IconButton, Icon} from '@material-ui/core';
+// -------------------------------------------------------------------------------
 
-
+// We import the visibility icons
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 

@@ -15,12 +15,15 @@ router.get('/', getPosts);
 router.post('/',auth, createPost);
 
 // update route
-router.patch('/:id',auth, updatePost); //auth is added to see if the user has permission to update the post
+router.patch('/:id',auth, updatePost); 
+//auth is added to see if the user has permission to update the post
 
-router.delete('/:id',auth, deletePost); //auth is added to see if the user has permission to delete the post
+router.delete('/:id',auth, deletePost); 
+//auth is added to see if the user has permission to delete the post
 
 
-router.patch('/:id/likePost',auth, likePost); //auth is added to see if the user has permission to like (only once) the post
+router.patch('/:id/likePost',auth, likePost); 
+//auth is added to see if the user has permission to like (only once) the post
 
 // exporting default router
 export default router;
