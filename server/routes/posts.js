@@ -12,7 +12,7 @@ const router = express.Router();
 router.get('/', getPosts);
 
 // post controller
-router.post('/', createPost);
+router.post('/',auth, createPost);
 
 // update route
 router.patch('/:id',auth, updatePost); //auth is added to see if the user has permission to update the post
