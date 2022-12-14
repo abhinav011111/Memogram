@@ -159,8 +159,9 @@ export const getPost = async (req, res) => {
 
 export const createPost = async (req, res) => {
     const post = req.body;
+    console.log(req.userId);
     const newPostMessage = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() })
-
+    console.log(newPostMessage.creator);
     try {
         await newPostMessage.save();
 
