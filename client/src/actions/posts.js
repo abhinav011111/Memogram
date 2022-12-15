@@ -30,6 +30,37 @@ export const getPosts = () => async (dispatch) => {
 };
 
 
+export const getPostsBySearch = (searchQuery) => async (dispatch) => {
+
+    try {
+        // Bringing the data from the API using fetchPosts;
+        const {data} = await api.fetchPostsBySearch(searchQuery);
+
+        // Defining an action
+        /*
+            Action 
+                type : FETCH_ALL
+                payload : All the posts in form of an array
+        */
+        // const action = {type : FETCH_ALL, payload : data};
+
+
+        // returning the action using the dispatch function of REDUX-THUNK
+        // dispatch(action);
+
+        console.log(data);
+
+    } catch (error) {
+
+        // err
+        console.log(error);
+    }
+};
+
+
+
+
+
 export const createPost = (post) => async (dispatch) => {
 
     try {
@@ -54,7 +85,6 @@ export const createPost = (post) => async (dispatch) => {
         console.log(error.message);
     }
 };
-
 
 export const updatePost = (id, post) => async (dispatch) => {
 

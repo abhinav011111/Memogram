@@ -24,6 +24,8 @@ API.interceptors.request.use((req)=>{
 // using the axios.get() function.
 export const fetchPosts = () => API.get('/posts');
 
+export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
+
 
 // Creating a create post request to the server with the data new post
 // using the axios.post() function.
