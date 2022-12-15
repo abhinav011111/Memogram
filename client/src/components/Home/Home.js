@@ -46,7 +46,7 @@ const Home = () => {
 
   // Current page selector
   const page = query.get("page") || 1;
-  
+
   // To get the search Queries
   const searchQuery = query.get("searchQuery");
 
@@ -66,9 +66,6 @@ const Home = () => {
     if (e.keyCode === 13) {
       searchPost();
     }
-    else{
-      history.push('/');
-    }
   };
 
   const searchPost = () => {
@@ -77,10 +74,13 @@ const Home = () => {
       dispatch(getPostsBySearch({search, tags: tags.join(',') }));
       // [tag1, tag2] -> tag1,tag2
     }
+    else{
+      history.push('/');
+    }
   };
 
-  const handleAdd = () => {};
-  const handleDelete = () => {};
+  const handleAdd = (tag) => setTags([...tags, tag]);
+  const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
 
   return (
     <Grow in>
