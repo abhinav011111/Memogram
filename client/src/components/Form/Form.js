@@ -34,7 +34,7 @@ const Form = ({currentId, setCurrentId}) => {
   // useEffect with dependencies
   useEffect(() => {
     if(post) setPostData(post);
-  }, [post, dispatch]);
+  }, [post]);
 
 
   // Clear function to clean the form
@@ -50,13 +50,14 @@ const Form = ({currentId, setCurrentId}) => {
     // else we will call the create method
     if(currentId){
       dispatch(updatePost(currentId, {...postData,name : user?.result?.name}));
+      // Clear function called.
+    clear();
     }
     else{
       dispatch(createPost({...postData,name:user?.result?.name}));
-    }
-
-    // Clear function called.
+      // Clear function called.
     clear();
+    }    
   };
 
 
@@ -75,7 +76,7 @@ const Form = ({currentId, setCurrentId}) => {
   return (
 
     // Wrapper of Paper around the form
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} raised elevation={6}>
 
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
 

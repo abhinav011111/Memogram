@@ -39,8 +39,8 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
         // Defining an action
         /*
             Action 
-                type : FETCH_ALL
-                payload : All the posts in form of an array
+                type :FETCH_BY_SEARCH
+                payload : posts with the given queries
         */
         // const action = {type : FETCH_ALL, payload : data};
 

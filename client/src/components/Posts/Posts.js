@@ -29,7 +29,7 @@ const Posts = ({setCurrentId}) => {
         {
           // for auto post : posts
           posts.map((post) =>(
-            <Grid key = {post._id} item xs ={12} sm ={6}>
+            <Grid key={post._id} item xs={12} sm={12} md={6} lg={4}>
               {/* It is a component with value equal to post; */}
               <Post post = {post} setCurrentId = {setCurrentId}/>
             </Grid>
