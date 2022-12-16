@@ -57,6 +57,8 @@ const Home = () => {
 
   const classes =  useStyles();
 
+  const user = JSON.parse(localStorage.getItem('profile'));
+
   // As soon as you open the app, you will see all the posts by DEFAULT
   useEffect(() => {
     dispatch(getPosts());
@@ -69,7 +71,7 @@ const Home = () => {
   };
 
   const searchPost = () => {
-    if (search.trim() || tags) {
+    if ((search.trim() || tags) && user) {
       dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
        // console.log(tags);
       history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
