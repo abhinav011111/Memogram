@@ -69,12 +69,11 @@ const Home = () => {
   };
 
   const searchPost = () => {
-
-    if(search.trim()){
-      dispatch(getPostsBySearch({search, tags: tags.join(',') }));
-      // [tag1, tag2] -> tag1,tag2
-    }
-    else{
+    if (search.trim() || tags) {
+      dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
+       // console.log(tags);
+      history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+    } else {
       history.push('/');
     }
   };
@@ -129,11 +128,11 @@ const Home = () => {
               </Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            {/* {!searchQuery && !tags.length && ( */}
+            {!searchQuery && !tags.length && (
               <Paper className={classes.pagination} elevation={6}>
                 <Pagination page={page} />
               </Paper>
-            {/* )} */}
+            )}
           </Grid>
         </Grid>
       </Container>

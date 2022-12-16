@@ -8,6 +8,32 @@ const router = express.Router();
 // creating an express router to route the requests to correct ENDPOINTS
 
 
+
+export const getPostsBySearch = async (req, res) => {
+    const { searchQuery, tags } = req.query;
+
+    const newtags = tags.split(',');
+    
+
+    const newtagArr = newtags.map((tag) => (
+        new RegExp(tag, "i")
+    ));
+
+    try {
+        const title = new RegExp(searchQuery, "i");
+        
+        
+
+        const posts = await PostMessage.find({ $or: [ { title }, { tags: { $in: newtagArr } } ]});
+
+
+        res.json({ data: posts });
+    } catch (error) {    
+        res.status(404).json({ message: error.message });
+    }
+}
+
+
 // Controller to GET request
 export const getPosts = async (req, res) => { 
     try {

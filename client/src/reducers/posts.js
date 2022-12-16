@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, DELETE, UPDATE } from '../constants/actionTypes';
+import { FETCH_BY_SEARCH,FETCH_ALL, CREATE, DELETE, UPDATE } from '../constants/actionTypes';
 //              State       Action
 export default (posts = [], action) => {
 
@@ -27,6 +27,10 @@ export default (posts = [], action) => {
         case CREATE:
             // concatenation of arrays
             return [...posts, action.payload];
+        
+        case FETCH_BY_SEARCH:
+            return action.payload;
+             
         default:
             return posts;
     }

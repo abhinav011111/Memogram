@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, DELETE, UPDATE } from '../constants/actionTypes';
+import { FETCH_BY_SEARCH,FETCH_ALL, CREATE, DELETE, UPDATE } from '../constants/actionTypes';
 import * as api from '../api';
 
 
@@ -34,7 +34,7 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 
     try {
         // Bringing the data from the API using fetchPosts;
-        const {data} = await api.fetchPostsBySearch(searchQuery);
+        const {data : {data}} = await api.fetchPostsBySearch(searchQuery);
 
         // Defining an action
         /*
@@ -47,8 +47,9 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 
         // returning the action using the dispatch function of REDUX-THUNK
         // dispatch(action);
-
-        console.log(data);
+        const action = {type : FETCH_BY_SEARCH, payload : data};
+         // console.log(data);
+        dispatch(action);
 
     } catch (error) {
 
