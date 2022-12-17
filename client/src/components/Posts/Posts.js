@@ -14,17 +14,18 @@ const Posts = ({setCurrentId}) => {
 
   const classes = useStyles();
 
-  const posts = useSelector((state) => state.posts);
+  const {posts} = useSelector((state) => state.posts);
 
   //------DEBUG------------
-  // console.log(posts);
+  console.log("here");
+  console.log(posts);
   //-----------------------
 
   
   return (
 
     // We have used a binder to return number of components different from each other
-    !posts.length ? <CircularProgress/> : (
+    !posts?.length ? <CircularProgress/> : (
       <Grid className = {classes.container} container alignItems = 'stretch' spacing={3}>
         {
           // for auto post : posts

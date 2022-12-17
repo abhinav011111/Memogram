@@ -11,6 +11,7 @@ const router = express.Router();
 
 export const getPostsBySearch = async (req, res) => {
     const { searchQuery, tags } = req.query;
+    console.log("We are here : "+ searchQuery + " " + tags);
 
     const newtags = tags.split(',');
     
@@ -18,31 +19,39 @@ export const getPostsBySearch = async (req, res) => {
     const newtagArr = newtags.map((tag) => (
         new RegExp(tag, "i")
     ));
+    const title = new RegExp(searchQuery, "i");
+    console.log(title);
+    
 
     try {
-        const title = new RegExp(searchQuery, "i");
         
         
 
         const posts = await PostMessage.find({ $or: [ { title }, { tags: { $in: newtagArr } } ]});
+        // console.log(posts);
 
 
         res.json({ data: posts });
     } catch (error) {    
         res.status(404).json({ message: error.message });
     }
+
+
 }
 
 
 // Controller to GET request
-export const getPosts = async (req, res) => { 
+export const getPosts = async (req, res) => {
+    const { page } = req.query;
+    
     try {
-
-        // find all the objects with the given Schema
-        const postMessages = await PostMessage.find().sort({createdAt:-1});
-        
-        res.status(200).json(postMessages);
-    } catch (error) {
+        const LIMIT = 9;
+        const startIndex = (Number(page) - 1) * LIMIT; // get the starting index of every page
+    
+        const total = await PostMessage.countDocuments({});
+        const posts = await PostMessage.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
+        res.json({ data: posts, currentPage: Number(page), numberOfPages: Math.ceil(total / LIMIT)});
+    } catch (error) {    
         res.status(404).json({ message: error.message });
     }
 }

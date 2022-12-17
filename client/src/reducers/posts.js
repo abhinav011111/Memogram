@@ -1,39 +1,45 @@
-import { FETCH_BY_SEARCH,FETCH_ALL, CREATE, DELETE, UPDATE } from '../constants/actionTypes';
+import {
+  FETCH_BY_SEARCH,
+  FETCH_ALL,
+  CREATE,
+  DELETE,
+  UPDATE,
+} from "../constants/actionTypes";
 //              State       Action
-export default (posts = [], action) => {
+export default (state = [], action) => {
+  // Switch case
+  switch (action.type) {
+    case DELETE:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== action.payload),
+      };
+    case UPDATE:
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post._id === action.payload._id ? action.payload : post
+        ),
+      };
 
-    // Switch case
-    switch (action.type) {
-        case DELETE:
-            return posts.filter((post)=>post._id!==action.payload);
-        case UPDATE:
-            // func changeVar(id, posts, payload){
-            //     for(post : posts){
-            //         if(post.id == payload.id){
-            //             post = payload;
-            //         }
-            //         else{
-            //             post = post
-            //         }
-            //     }
-            // }
-            return posts.map((post) => (post._id === action.payload._id) ? action.payload : post)
+    case FETCH_ALL:
+      return {
+        ...state,
+        posts: action.payload.data,
+        currentPage: action.payload.currentPage,
+        numberOfPages: action.payload.numberOfPages,
+      };
+    case CREATE:
+      return { ...state, posts: [...state.posts, action.payload] };
 
-        
-            
-        case FETCH_ALL:
+    case FETCH_BY_SEARCH:
+      {
+        console.log("here in reducer");
+        console.log(action.payload)
+        return { ...state, posts: action.payload };
+      }
 
-            return action.payload;
-        case CREATE:
-            // concatenation of arrays
-            return [...posts, action.payload];
-        
-        case FETCH_BY_SEARCH:
-            return action.payload;
-             
-        default:
-            return posts;
-    }
-
+    default:
+      return state;
+  }
 };
-

@@ -4,11 +4,11 @@ import * as api from '../api';
 
 // In react, instead of async await we use redux-thunk to provide asynchrounous calls.
 
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (page) => async (dispatch) => {
 
     try {
         // Bringing the data from the API using fetchPosts;
-        const {data} = await api.fetchPosts();
+        const { data: { data, currentPage, numberOfPages } } = await api.fetchPosts(page);
 
         // Defining an action
         /*
@@ -16,7 +16,8 @@ export const getPosts = () => async (dispatch) => {
                 type : FETCH_ALL
                 payload : All the posts in form of an array
         */
-        const action = {type : FETCH_ALL, payload : data};
+        // console.log(data);
+        const action = { type: FETCH_ALL, payload: { data, currentPage, numberOfPages } };
 
 
         // returning the action using the dispatch function of REDUX-THUNK
@@ -47,6 +48,8 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 
         // returning the action using the dispatch function of REDUX-THUNK
         // dispatch(action);
+        console.log("here in action");
+        console.log(data);
         const action = {type : FETCH_BY_SEARCH, payload : data};
          // console.log(data);
         dispatch(action);

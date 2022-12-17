@@ -35,6 +35,7 @@
 * Run **npm install gapi-script** to install the gapi-script.
 * Run **npm install react-google-login** to install the react-google-login.
 * Run **npm install jwt-decode** to install the react-google-login.
+
 #### Commands run in server directory
 * Run **npm init** to initialize node modules in server directory
 * Run **npm install express body-parser mongoose cors** to install the required modules
