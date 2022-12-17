@@ -12,16 +12,21 @@ const router = express.Router();
 export const getPostsBySearch = async (req, res) => {
     const { searchQuery, tags } = req.query;
     console.log("We are here : "+ searchQuery + " " + tags);
-
-    const newtags = tags.split(',');
+    var ab= tags;
+    if(!tags)
+    {
+         ab='none';
+        
+    }
+    const newtags = ab.split(','); 
     
-
+    
     const newtagArr = newtags.map((tag) => (
         new RegExp(tag, "i")
     ));
     const title = new RegExp(searchQuery, "i");
-    console.log(title);
-    
+    //console.log(title);
+    //console.log(newtagArr);
 
     try {
         

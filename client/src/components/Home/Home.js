@@ -46,6 +46,7 @@ const Home = () => {
 
   // Current page selector
   const page = query.get("page") || 1;
+  console.log(page);
 
   // To get the search Queries
   const searchQuery = query.get("searchQuery");
@@ -108,7 +109,7 @@ const Home = () => {
                 name="search"
                 variant="outlined"
                 label="Search Memories"
-                onKeyPress = {handleKeyPress}
+                onKeyDown= {handleKeyPress}
                 fullWidth
                 value= {search}
                 onChange={(e) => setSearch(e.target.value)}
