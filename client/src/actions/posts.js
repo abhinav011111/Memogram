@@ -82,7 +82,7 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 
 
 
-export const createPost = (post) => async (dispatch) => {
+export const createPost = (post,history) => async (dispatch) => {
 
     try {
         dispatch({type: START_LOADING});
@@ -95,6 +95,7 @@ export const createPost = (post) => async (dispatch) => {
                 type : CREATE
                 payload : new post to be created
         */
+       history.push(`/posts/${data._id}`);
         const action = {type : CREATE, payload : data};
 
 
