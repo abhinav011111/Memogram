@@ -14,18 +14,18 @@ const Posts = ({setCurrentId}) => {
 
   const classes = useStyles();
 
-  const {posts} = useSelector((state) => state.posts);
+  const { posts, isLoading } = useSelector((state) => state.posts);
 
   //------DEBUG------------
   console.log("here");
   console.log(posts);
   //-----------------------
-
+if(!posts.length && !isLoading) return 'No posts';
   
   return (
 
     // We have used a binder to return number of components different from each other
-    !posts?.length ? <CircularProgress/> : (
+    isLoading ? <CircularProgress/> : (
       <Grid className = {classes.container} container alignItems = 'stretch' spacing={3}>
         {
           // for auto post : posts
