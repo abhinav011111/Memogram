@@ -1,13 +1,26 @@
-import { FETCH_BY_SEARCH,FETCH_ALL, CREATE, DELETE, UPDATE } from '../constants/actionTypes';
+import { FETCH_BY_SEARCH,FETCH_ALL,FETCH_POST, CREATE, START_LOADING,END_LOADING, DELETE, UPDATE } from '../constants/actionTypes';
 import * as api from '../api';
 
 
 // In react, instead of async await we use redux-thunk to provide asynchrounous calls.
+export const getPost = (id) => async (dispatch) => {
+    try {
+      dispatch({ type: START_LOADING });
+  
+      const { data } = await api.fetchPost(id);
+  
+      dispatch({ type: FETCH_POST, payload: { post: data } });
+      dispatch({type: END_LOADING});
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 export const getPosts = (page) => async (dispatch) => {
 
     try {
         // Bringing the data from the API using fetchPosts;
+        dispatch({type: START_LOADING});
         const { data: { data, currentPage, numberOfPages } } = await api.fetchPosts(page);
 
         // Defining an action
@@ -22,6 +35,7 @@ export const getPosts = (page) => async (dispatch) => {
 
         // returning the action using the dispatch function of REDUX-THUNK
         dispatch(action);
+        dispatch({type: END_LOADING});
 
     } catch (error) {
 
@@ -34,6 +48,7 @@ export const getPosts = (page) => async (dispatch) => {
 export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 
     try {
+        dispatch({type: START_LOADING});
         // Bringing the data from the API using fetchPosts;
         const {data : {data}} = await api.fetchPostsBySearch(searchQuery);
 
@@ -53,6 +68,7 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
         const action = {type : FETCH_BY_SEARCH, payload : data};
          // console.log(data);
         dispatch(action);
+        dispatch({type: END_LOADING});
 
     } catch (error) {
 
@@ -68,6 +84,7 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 export const createPost = (post) => async (dispatch) => {
 
     try {
+        dispatch({type: START_LOADING});
         // Bringing the data from the API using fetchPosts;
         const {data} = await api.createPost(post);
 
@@ -82,6 +99,7 @@ export const createPost = (post) => async (dispatch) => {
 
         // returning the action using the dispatch function of REDUX-THUNK
         dispatch(action);
+        dispatch({type: END_LOADING});
 
     } catch (error) {
 
