@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 // Import file base to handle image-data === base-64
 import FileBase from 'react-file-base64';
-
+import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
 
 import {createPost, updatePost} from '../../actions/posts';
@@ -23,11 +23,11 @@ const Form = ({currentId, setCurrentId}) => {
   
   // When is current Id null? When we are not editing any posts!!!!
   // post is equal to null post when the current id is null, otherwise its value is equal to the value of the post that we will edit.
-  const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
+  const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
 
   const classes = useStyles();
   const dispatch = useDispatch();
-
+  const history = useHistory();
   // We find the user which is stored in the local-storage and parse it in JSON.
   const user = JSON.parse(localStorage.getItem('profile'));
 
@@ -54,7 +54,8 @@ const Form = ({currentId, setCurrentId}) => {
     clear();
     }
     else{
-      dispatch(createPost({...postData,name:user?.result?.name}));
+      dispatch(createPost({...postData,name:user?.result?.name},history));
+      
       // Clear function called.
     clear();
     }    
