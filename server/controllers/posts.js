@@ -21,18 +21,17 @@ export const getPostsBySearch = async (req, res) => {
     const newtags = ab.split(','); 
     
     
-    const newtagArr = newtags.map((tag) => (
-        new RegExp(tag, "i")
-    ));
-    const title = new RegExp(searchQuery, "i");
+    // const newtagArr = newtags.map((tag) => (
+    //     new RegExp(tag, "i")
+    // ));
+    
     //console.log(title);
     //console.log(newtagArr);
 
     try {
         
-        
-
-        const posts = await PostMessage.find({ $or: [ { title }, { tags: { $in: newtagArr } } ]});
+        const title = new RegExp(searchQuery, "i");
+        const posts = await PostMessage.find({ $or: [ { title }, { tags: { $in: newtags } } ]});
         // console.log(posts);
 
 

@@ -49,7 +49,7 @@ export default (state = {isLoading:true,posts: []}, action) => {
         {
           // console.log("here in reducer");
           // console.log(action.payload)
-          return { ...state, post: action.payload };
+          return { ...state, post: action.payload.post };
         }
 
     default:
