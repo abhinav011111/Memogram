@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
     objectFit: 'cover',
     width: '100%',
     maxHeight: '600px',
+    maxWidth: '600px'
 
   },
   card: {
@@ -49,5 +50,6 @@ export default makeStyles((theme) => ({
     height: '200px',
     overflowY: 'auto',
     marginRight: '30px',
+    maxWidth: '300px'
   },
 }));

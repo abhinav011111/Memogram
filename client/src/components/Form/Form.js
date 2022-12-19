@@ -43,6 +43,7 @@ const Form = ({currentId, setCurrentId}) => {
     setPostData({ title: '', message: '', tags: '', selectedFile: '' });
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // If we have called the submit button and there is a non-null id, 
@@ -54,7 +55,13 @@ const Form = ({currentId, setCurrentId}) => {
     clear();
     }
     else{
-      dispatch(createPost({...postData,name:user?.result?.name},history));
+
+      if(!postData.title){
+        alert("Title cannot be empty...")
+      }
+
+      else
+        dispatch(createPost({...postData,name:user?.result?.name},history));
       
       // Clear function called.
     clear();
