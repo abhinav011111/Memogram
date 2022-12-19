@@ -91,12 +91,15 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
       </div>
       {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator || user?.result?._id === "639a08b30f2d3f6d41760451") && (
-      <div className={classes.overlay2}>
-        <Button
-          style={{ color: "white" }}
-          size="small"
-          onClick={() => setCurrentId(post._id)}
-        >
+      <div className={classes.overlay2} name="edit">
+      <Button
+        onClick={(e) => {
+          e.stopPropagation();
+          setCurrentId(post._id);
+        }}
+        style={{ color: 'white' }}
+        size="small"
+      >
           <MoreHorizIcon fontSize="default" />
         </Button>
       </div>
