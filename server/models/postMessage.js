@@ -14,6 +14,10 @@ const postSchema = mongoose.Schema({ // Using .Schema function for creating sche
         type : [String],
         default : [] // specifying the default value to 0
     },
+    comments : {
+        type : [String],
+        default : [] // specifying the default value to 0
+    },
     createdAt :{
         type : Date,
         default : new Date() // specifying the default value to 0
