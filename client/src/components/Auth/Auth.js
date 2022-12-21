@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
@@ -20,6 +20,8 @@ import useStyles from './styles';
 
 import Input from './Input';
 
+import {gapi} from 'gapi-script';
+
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const SignUp = () => {
@@ -37,7 +39,7 @@ const SignUp = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
   };
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -62,7 +64,15 @@ const SignUp = () => {
   };
 
   const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
-
+  useEffect(()=> {
+    function start() {
+        gapi.client.init({
+            clientId: "450126490679-f7arnfrn0badtsn2phchqlb2acd0nvih.apps.googleusercontent.com",
+            scope: ""
+        })
+    };
+    gapi.load('client:auth2',start);
+});
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   return (
@@ -88,12 +98,13 @@ const SignUp = () => {
             { isSignup ? 'Sign Up' : 'Sign In' }
           </Button>
           <GoogleLogin
-            clientId="433227471771-o2snql8hvgpooov2e8757l9ehk983uld.apps.googleusercontent.com"
-            render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                Google Sign In
-              </Button>
-            )}
+            clientId="450126490679-f7arnfrn0badtsn2phchqlb2acd0nvih.apps.googleusercontent.com"
+            // render={(renderProps) => (
+            //   <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
+            //     Google Sign In
+            //   </Button>
+            // )}
+            buttonText="Sign up with google"
             onSuccess={googleSuccess}
             onFailure={googleError}
             cookiePolicy="single_host_origin"
