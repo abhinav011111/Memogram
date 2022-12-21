@@ -7,11 +7,23 @@ import PostMessage from '../models/postMessage.js';
 const router = express.Router(); 
 // creating an express router to route the requests to correct ENDPOINTS
 
+export const getPostsByUser = async(req, res) => {
+    try{
+
+        // console.log(req.query.userQuery);
+        const posts = await PostMessage.find({creator: req.query.userQuery});
+        res.json({data: posts});
+
+    }
+    catch(error){
+        console.log( res.status(404).json({ message: error.message }));
+    }
+};
 
 
 export const getPostsBySearch = async (req, res) => {
     const { searchQuery, tags } = req.query;
-    console.log("We are here : "+ searchQuery + " " + tags);
+    // console.log("We are here : "+ searchQuery + " " + tags);
     var ab= tags;
     if(!tags)
     {
@@ -41,7 +53,7 @@ export const getPostsBySearch = async (req, res) => {
     }
 
 
-}
+};
 
 
 // Controller to GET request
@@ -58,7 +70,7 @@ export const getPosts = async (req, res) => {
     } catch (error) {    
         res.status(404).json({ message: error.message });
     }
-}
+};
 
 export const commentPost = async (req, res) => {
     const { id } = req.params;

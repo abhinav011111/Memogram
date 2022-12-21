@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 // Importing different components
 
-import { getPosts, getPostsBySearch } from "../../actions/posts";
+import { commentPost, getPosts, getPostsBySearch, getPostByUser} from "../../actions/posts";
 
 // import useStyles from './styles'
 import Posts from "../Posts/Posts";
@@ -46,7 +46,7 @@ const Home = () => {
 
   // Current page selector
   const page = query.get("page") || 1;
-  console.log(page);
+  // console.log(page);
 
   // To get the search Queries
   const searchQuery = query.get("searchQuery");
@@ -55,6 +55,8 @@ const Home = () => {
   const [search, setSearch] = useState('');
 
   const [tags, setTags] = useState([]);
+  
+  const [id, setId] = useState(0); 
 
   const classes =  useStyles();
 
@@ -71,10 +73,22 @@ const Home = () => {
     }
   };
 
+  const handleMyPost = () => {
+    if(!user){
+      alert('You are not logged in...');
+    }
+    else{
+      const userId = user?.result.googleId || user?.result._id;
+      setId(1);
+      dispatch(getPostByUser(userId));
+      history.push('/posts/user?userQuery');
+    }
+  };
+
   const searchPost = () => {
     if (search.trim() || tags) {
-      console.log("here in home");
-      console.log(search);
+      // console.log("here in home");
+      // console.log(search);
       dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
        // console.log(tags);
       history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
@@ -131,9 +145,12 @@ const Home = () => {
               >
                 Search
               </Button>
+
+              <Button variant="contained" color="secondary" fullWidth onClick = {handleMyPost}>Find my posts</Button>
+
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            {(!searchQuery && !tags.length)&&(
+            {(!searchQuery && !tags.length && !id )&&(
               <Paper className={classes.pagination} elevation={6}>
               <Pagination page={page} />
               </Paper>

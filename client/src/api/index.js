@@ -24,6 +24,12 @@ API.interceptors.request.use((req)=>{
 // using the axios.get() function.
 export const fetchPosts = (page) => API.get(`/posts/?page=${page}`);
 
+export const fetchPostsByUser = (userId) =>
+    // console.log('Reached in API');
+    // console.log(userId);
+    API.get(`/posts/user?userQuery=${userId}`)
+;
+
 export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
 
 export const fetchPost =(id) => API.get(`/posts/${id}`);

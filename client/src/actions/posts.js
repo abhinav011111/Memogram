@@ -1,4 +1,4 @@
-import { FETCH_BY_SEARCH,FETCH_ALL,FETCH_POST, CREATE, START_LOADING,END_LOADING, DELETE,COMMENT, UPDATE } from '../constants/actionTypes';
+import { FETCH_BY_SEARCH,FETCH_ALL,FETCH_POST, CREATE, START_LOADING,END_LOADING, DELETE,COMMENT, UPDATE, FETCH_BY_USER } from '../constants/actionTypes';
 import * as api from '../api';
 
 
@@ -16,6 +16,8 @@ export const getPost = (id) => async (dispatch) => {
       console.log(error);
     }
   };
+
+
 
 export const getPosts = (page) => async (dispatch) => {
 
@@ -45,11 +47,30 @@ export const getPosts = (page) => async (dispatch) => {
     }
 };
 
+export const getPostByUser = (userId) => async(dispatch) => {
+    try{
+        // console.log('Request reached in action');
+        // console.log(userId);
+        dispatch({type : START_LOADING});
+        const {data : {data}} = await api.fetchPostsByUser(userId);
+        // console.log('again in action');
+        // console.log({data});
+        const action = {type : FETCH_BY_USER, payload : data};
+         // console.log(data);
+        dispatch(action);
+
+        dispatch({type : END_LOADING});
+    }
+    catch(error){
+        console.log(error);
+    }
+};
 
 export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 
     try {
         dispatch({type: START_LOADING});
+        // console.log(searchQuery);
         // Bringing the data from the API using fetchPosts;
         const {data : {data}} = await api.fetchPostsBySearch(searchQuery);
 
@@ -64,8 +85,8 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 
         // returning the action using the dispatch function of REDUX-THUNK
         // dispatch(action);
-        console.log("here in action");
-        console.log(data);
+        //console.log("here in action");
+        //console.log(data);
         const action = {type : FETCH_BY_SEARCH, payload : data};
          // console.log(data);
         dispatch(action);

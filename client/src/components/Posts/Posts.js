@@ -17,8 +17,8 @@ const Posts = ({setCurrentId}) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
 
   //------DEBUG------------
-  console.log("here");
-  console.log(posts);
+  // console.log("here");
+  // console.log(posts);
   //-----------------------
 if(!posts.length && !isLoading) return 'No posts';
   

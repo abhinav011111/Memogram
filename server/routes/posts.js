@@ -1,7 +1,7 @@
 import express from 'express'; // importing express
 
 // post also imported
-import {getPostsBySearch ,getPosts,getPost, createPost, updatePost, deletePost, likePost,commentPost} from '../controllers/posts.js'; // importing handler for the get method of the post router
+import {getPostsBySearch ,getPosts,getPost, createPost, updatePost, deletePost, likePost,commentPost, getPostsByUser} from '../controllers/posts.js'; // importing handler for the get method of the post router
 import auth from '../middleware/auth.js'
 // Creating router for the express server
 // Router method is used.
@@ -11,6 +11,7 @@ const router = express.Router();
 // router to send request to search by given parameter
 router.get('/search', getPostsBySearch);
 
+router.get('/user', getPostsByUser);
 // the request is sent to '/' 
 // but due to the prefix it goes to '/posts'
 router.get('/', getPosts);

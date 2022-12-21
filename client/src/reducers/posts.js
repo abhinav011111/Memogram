@@ -7,7 +7,8 @@ import {
   UPDATE,
   COMMENT,
   START_LOADING,
-  END_LOADING
+  END_LOADING,
+  FETCH_BY_USER,
 } from "../constants/actionTypes";
 //              State       Action
 export default (state = { isLoading: true, posts: [] }, action) => {
@@ -55,6 +56,10 @@ export default (state = { isLoading: true, posts: [] }, action) => {
         //console.log("here in reducer");
         //console.log(action.payload)
         return { ...state, posts: action.payload };
+      }
+    case FETCH_BY_USER:
+      {
+        return {...state, posts:action.payload};
       }
     case FETCH_POST:
       {
