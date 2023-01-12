@@ -90,7 +90,7 @@ const Post = ({ post, setCurrentId }) => {
           {moment(post.createdAt).fromNow()}
         </Typography>
       </div>
-      {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator || user?.result?._id === "639a08b30f2d3f6d41760451") && (
+      {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator || user?.result?._id === "63c042e12dfa43613d7bc80b") && (
       <div className={classes.overlay2} name="edit">
       <Button
         onClick={(e) => {
@@ -127,7 +127,7 @@ const Post = ({ post, setCurrentId }) => {
       <Button size="small" color="primary" disabled={!user?.result} onClick={handleLike}>
           <Likes />
         </Button>
-        {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator || user?.result?._id === "639a08b30f2d3f6d41760451") && (
+        {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator || user?.result?._id === "63c042e12dfa43613d7bc80b") && (
           <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
             <DeleteIcon fontSize="small" /> &nbsp; Delete
           </Button>
