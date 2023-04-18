@@ -10,7 +10,7 @@ import { GoogleLogin } from 'react-google-login';
 
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-import Icon from './icon';
+// import Icon from './icon';
 
 import { signin, signup } from '../../actions/auth';
 
@@ -91,6 +91,7 @@ const SignUp = () => {
             </>
             )}
             <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
+            <Input name="phone_number" label="Phone number" handleChange={handleChange} type="phone_number" />
             <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
             { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
           </Grid>

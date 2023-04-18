@@ -47,7 +47,7 @@ export const signin = async(req,res)=> {
 // just increase the number of checks and store the password in bcrypted form with us.
 
 export const signup = async(req,res)=> {
-    const {email, password, confirmPassword, firstName, lastName} = req.body;
+    const {email, password, confirmPassword, firstName, lastName, phone_number} = req.body;
 
     try {
         const existingUser = await User.findOne({email});
@@ -58,7 +58,7 @@ export const signup = async(req,res)=> {
 
         const hashedPassword = await bcrypt.hash(password,12);
         
-        const result = await User.create({email, password: hashedPassword, name: `${firstName} ${lastName}` });
+        const result = await User.create({email, password: hashedPassword, name: `${firstName} ${lastName}`, phone_number : phone_number});
 
         const token = jwt.sign({email:result.email,id: result._id},'test', {expiresIn: "1h"});
 

@@ -90,7 +90,7 @@ const Post = ({ post, setCurrentId }) => {
           {moment(post.createdAt).fromNow()}
         </Typography>
       </div>
-      {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator || user?.result?._id === "63c042e12dfa43613d7bc80b") && (
+      {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator || user?.result?._id === "643d6746cd1034b513b61aa2") && (
       <div className={classes.overlay2} name="edit">
       <Button
         onClick={(e) => {

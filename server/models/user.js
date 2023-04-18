@@ -4,6 +4,7 @@ import mongoose from 'mongoose'; // Importing mongoDB crawler
 const userSchema = mongoose.Schema({
    name: {type:String, required: true},
    email: {type: String, required: true},
+   phone_number : {type: String},
    password: {type: String, required: true},
    id: {type: String},
  });

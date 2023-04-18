@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'; // import dotenv to create the dot environment
 import express from 'express'; // Import express 
 import bodyParser from 'body-parser'; // Import body-parser
 import mongoose from 'mongoose'; // Import mongoose
@@ -45,5 +45,5 @@ const PORT = process.env.PORT || 5000;
 // Good practice to add them -- reduces error.
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => app.listen(PORT, () => console.log(`Server listening on Port: http://localhost:${PORT}`)))
-  .catch((error) => console.log(`${error} did not connect`));
+  .catch((error) => console.log(`${error} : Error in connecting to the MongoDB server`));
 // The above runs the server(app) on the correct database url with mongoose crawler
