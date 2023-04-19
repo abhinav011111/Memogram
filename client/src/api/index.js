@@ -4,7 +4,7 @@
 import axios from 'axios';
 
 // URL on which the backend send the posts.
-const API = axios.create({baseURL:'https://memogram-backend.onrender.com/posts'});
+const API = axios.create({baseURL:'https://memogram-backend.onrender.com'});
 
 // We intercept the request, and check whether an authorized actions is taking place
 // We find 'profile' from the local-storage
