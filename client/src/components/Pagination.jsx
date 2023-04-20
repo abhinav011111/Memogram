@@ -5,7 +5,7 @@ import { Pagination, PaginationItem } from '@material-ui/lab';
 import { Link } from 'react-router-dom';
 
 import { getPosts } from '../actions/posts';
-import useStyles from './styles.js';
+import useStyles from './styles';
 
 const Paginate = ({ page }) => {
   const { numberOfPages } = useSelector((state) => state.posts);
