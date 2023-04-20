@@ -1,4 +1,7 @@
 body{
     /* background-color: #330033; */
-    background-image: url("./images/bg2.jpg");
+    background-image: url("./images/IMG_5561.jpg") ;
+    background-size: cover; /* or "contain" depending on what you want */
+    background-position: center center;
+    /* background-repeat: no-repeat; */
 }
