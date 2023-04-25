@@ -91,7 +91,12 @@ const SignUp = () => {
             </>
             )}
             <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
-            <Input name="phone_number" label="Phone number" handleChange={handleChange} type="phone_number" />
+            { isSignup && (
+            <>
+              <Input name="phone_number" label="Phone number" handleChange={handleChange} type="phone_number" />
+            </>
+            )}
+           
             <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
             { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
           </Grid>

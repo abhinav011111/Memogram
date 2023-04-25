@@ -47,7 +47,7 @@ const auth = async(req,res,next) => {
     }
 }
 
-// exporint as a const auth
+// exporting as a const auth
 // we can call auth to check whether a given user is even authorized to do a particular action
 // or NOT.
 export default auth;

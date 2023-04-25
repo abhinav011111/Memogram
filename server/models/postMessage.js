@@ -9,6 +9,7 @@ const postSchema = mongoose.Schema({ // Using .Schema function for creating sche
     name: String,
     creator: String,
     tags : [String],
+    // [[string]]
     selectedFile : String,
     likes : {
         type : [String],

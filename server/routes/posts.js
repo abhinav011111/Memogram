@@ -8,6 +8,8 @@ import auth from '../middleware/auth.js'
 const router = express.Router();
 
 
+// url/search
+
 // router to send request to search by given parameter
 router.get('/search', getPostsBySearch);
 
